@@ -1,26 +1,25 @@
 var Stack = function() {
   var obj = Object.create(stackMethods);
   obj.storage = {};
+  obj.count = 0;
   return obj;
 };
 
 var stackMethods = {
   push: function(val) {
-    var keys = Object.keys(this.storage);
-    var key = keys.length;
-    this.storage[key] = val;
+    this.storage[this.count] = val;
+    this.count++;
   },
 
   pop: function() {
-    var keys = Object.keys(this.storage);
-    var key = keys[keys.length - 1];
-    var toBeDeleted = this.storage[key];
-    delete this.storage[key];
+    var toBeDeleted = this.storage[this.count - 1];
+    delete this.storage[this.count - 1];
+    this.count--;
     return toBeDeleted;
   },
 
   size: function() {
-    return Object.keys(this.storage).length;
+    return this.count < 0 ? 0 : this.count;
   }
 };
 
