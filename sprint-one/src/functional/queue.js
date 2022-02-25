@@ -1,23 +1,23 @@
 var Queue = function() {
   var someInstance = {};
   var storage = {};
+  var front = 0;
+  var back = 0;
 
   someInstance.enqueue = function(value) {
-    var keys = Object.keys(storage);
-    var key = keys[keys.length - 1] + 1;
-    storage[key] = value;
+    storage[back] = value;
+    back++;
   };
 
   someInstance.dequeue = function() {
-    var keys = Object.keys(storage);
-    var targetKey = keys[0];
-    var toBeDeleted = storage[targetKey];
-    delete storage[targetKey];
+    var toBeDeleted = storage[front];
+    delete storage[front];
+    front++;
     return toBeDeleted;
   };
 
   someInstance.size = function() {
-    return Object.keys(storage).length;
+    return (back - front) < 0 ? 0 : (back - front);
   };
 
   return someInstance;
