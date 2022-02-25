@@ -1,6 +1,4 @@
 var Stack = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
   var obj = {};
   obj.storage = {};
   extend(obj, stackMethods);
@@ -15,10 +13,6 @@ var extend = function(obj1, obj2) {
 
 var stackMethods = {
   push: function(val) {
-    //push adds to very end
-    //get keys
-    //get last element in keys
-    //set obj at keys as value
     var keys = Object.keys(this.storage);
     var key = keys.length;
     this.storage[key] = val;
