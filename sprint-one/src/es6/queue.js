@@ -1,23 +1,23 @@
 class Queue {
   constructor() {
     this.storage = {};
+    this.front = 0;
+    this.back = 0;
   }
 
   enqueue(val) {
-    var keys = Object.keys(this.storage);
-    var key = keys[keys.length - 1] + 1;
-    this.storage[key] = val;
+    this.storage[this.back] = val;
+    this.back++;
   }
 
   dequeue() {
-    var keys = Object.keys(this.storage);
-    var key = keys[0];
-    var toBeDeleted = this.storage[key];
-    delete this.storage[key];
+    var toBeDeleted = this.storage[this.front];
+    delete this.storage[this.front];
+    this.front++;
     return toBeDeleted;
   }
 
   size() {
-    return Object.keys(this.storage).length;
+    return (this.back - this.front) < 0 ? 0 : (this.back - this.front);
   }
 }
