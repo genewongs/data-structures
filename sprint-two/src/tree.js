@@ -1,8 +1,8 @@
+
 var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
   _.extend(newTree, treeMethods);
-  // your code here
   newTree.children = [];
   return newTree;
 };
@@ -16,23 +16,29 @@ treeMethods.addChild = function(value) {
 
 treeMethods.contains = function(target) {
   if (this.value === target) {
-
+    return true;
   }
 
-  // base case, no children:
   if (this.children.length === 0) {
     return;
   }
 
-  //if children array is greater than 0
   if (this.children.length > 0) {
-
+    for (var i = 0; i < this.children.length; i++) {
+      var result = this.children[i].contains(target);
+      if (result) {
+        return true;
+      }
+    }
   }
-
+  return false;
 };
 
 
 
 /*
  * Complexity: What is the time complexity of the above functions?
+addChild = o(1)
+
+contains = o(N)
  */

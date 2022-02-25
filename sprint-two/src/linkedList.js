@@ -4,17 +4,12 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
-    // create new node variable
     var newNode = new Node(value);
-    // check if list.head is null
     if (list.head === null) {
-      // if null, add new node as head
       list.head = newNode;
     } else {
-      // if not null, add new node to tail.next
       list.tail.next = newNode;
     }
-    // assign new node to tail
     list.tail = newNode;
   };
 
@@ -53,4 +48,9 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+addToTail = o(1)
+
+removeTail = o(1)
+
+contains = o(N)
  */
