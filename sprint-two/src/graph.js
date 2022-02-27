@@ -59,6 +59,13 @@ Graph.prototype.forEachNode = function(cb) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+addNode = o(1)
+contains = o(1)
+removeNode = o(n2) quadratic
+hasEdge = o(n) lineaer
+addEdge = o(1)
+removeEdge = o(n2) quadratic
+forEachNode = o(n)
  */
 
 
